@@ -4,11 +4,12 @@ This guide will walk you through the steps to build and deploy MyApp using Maven
 
 ## Prerequisites
 
-Before you begin, make sure to have the following tools installed on your system:
+Before you begin, make sure to have the following tools and utilities installed on your system:
 
 - [Maven](https://maven.apache.org/)
 - [Docker](https://www.docker.com/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
+- [minikube](https://minikube.sigs.k8s.io/)
 
 ## Building the Application
 
@@ -66,7 +67,7 @@ Before you begin, make sure to have the following tools installed on your system
 
 ## **Deploying to Kubernetes**
 
-1. Apply the Kubernetes deployment configuration to deploy MyApp:
+1. Apply the Kubernetes deployment configuration to deploy MyApp using minikube:
     
     ```bash
     minikube start
@@ -76,7 +77,6 @@ Before you begin, make sure to have the following tools installed on your system
     
     ```bash
     kubectl apply -f deployment.yaml
-    
     ```
     
 3. Check the nodes in your Kubernetes cluster:
@@ -97,10 +97,10 @@ Before you begin, make sure to have the following tools installed on your system
     kubectl get pods
     ```
     
-6. Access the logs of all the pods if needed:
+6. Access the logs of all the pods if needed using the following script:
     
     ```bash
-    ./get_pod_logs.sh
+    ./get_pods_logs.sh
     ```
     
 7. Apply the Kubernetes service configuration to expose the application:
@@ -121,7 +121,7 @@ Before you begin, make sure to have the following tools installed on your system
     kubectl get nodes -o wide
     ```
     
-10. Access your application by obtaining the external IP of the service, using the next script:
+10. Access your application by obtaining the external IP of the service using the following script:
     
     ```bash
     ./get_app_url.sh

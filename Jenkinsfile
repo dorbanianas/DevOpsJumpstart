@@ -37,8 +37,8 @@ pipeline {
         
         stage("Docker login"){
             steps {
-                withCredentials([string(credentialsId: '3xcelsior', variable: 'dockerhubpwd')]) {
-                    sh "docker login -u 3xcelsior -p ${dockerhubpwd}"
+                withCredentials([string(credentialsId: 'dockerpresentation', variable: 'dockerhubpwd')]) {
+                    sh "docker login -u dockerpresentation -p ${dockerhubpwd}"
                 }
             }
         }
@@ -46,8 +46,8 @@ pipeline {
         stage("Docker push"){
             steps {
                  sh """ 
-                        docker tag devopspresentation/myapp:1.0 3xcelsior/myapp 
-                        docker push 3xcelsior/myapp
+                        docker tag devopspresentation/myapp:1.0 dockerpresentation/myapp 
+                        docker push dockerpresentation/myapp
                     """ 
             }
         }
@@ -55,7 +55,7 @@ pipeline {
         stage("Docker run"){
             steps {
                  sh """
-                        docker run -d -p 8080:8080 3xcelsior/myapp  
+                        docker run -d -p 8080:8080 dockerpresentation/myapp  
                     """ 
             }
         }

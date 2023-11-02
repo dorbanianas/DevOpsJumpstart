@@ -15,13 +15,13 @@ pipeline {
         
         stage("Build"){
             steps {
-                bat "mvn clean package"
+                sh "mvn clean package"
             }
         }
         
         stage("Sonarqube Analysis "){
             steps{
-                bat """
+                sh """
                     mvn sonar:sonar -Dsonar.url=http://localhost:9000/ -Dsonar.login=sqa_95faca75f100b421fae964b7cb94069cd99f6000 -Dsonar.projectName=Devops \
                     -Dsonar.java.binaries=. \
                     -Dsonar.projectKey=Devops
@@ -37,14 +37,14 @@ pipeline {
         stage("Docker login"){
             steps {
                 withCredentials([string(credentialsId: '3xcelsior', variable: 'dockerhubpwd')]) {
-                    bat "docker login -u 3xcelsior -p ${dockerhubpwd}"
+                    sh "docker login -u 3xcelsior -p ${dockerhubpwd}"
                 }
             }
         }
         
         stage("Docker push"){
             steps {
-                 bat """ 
+                 sh """ 
                         docker tag devopspresentation/myapp:1.0 3xcelsior/myapp 
                         docker push 3xcelsior/myapp
                     """ 
@@ -53,7 +53,7 @@ pipeline {
         
         stage("Docker run"){
             steps {
-                 bat """
+                 sh """
                         docker run -d -p 8080:8080 3xcelsior/myapp  
                     """ 
             }

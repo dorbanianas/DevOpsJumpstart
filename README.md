@@ -4,7 +4,7 @@ This guide will walk you through the steps to build and deploy MyApp using Maven
 
 ## Prerequisites
 
-Before you begin, ensure that you have the following tools installed on your system:
+Before you begin, make sure to have the following tools installed on your system:
 
 - [Maven](https://maven.apache.org/)
 - [Docker](https://www.docker.com/)
@@ -15,7 +15,7 @@ Before you begin, ensure that you have the following tools installed on your sys
 1. Clone the project from the repository:
     
     ```bash
-    git clone https://github.com/dorbanianas/devops-presentation
+    git clone <https://github.com/dorbanianas/devops-presentation>
     ```
     
 2. Navigate to the project directory:
@@ -45,13 +45,19 @@ Before you begin, ensure that you have the following tools installed on your sys
     docker login
     ```
     
-2. Build a Docker image for MyApp, giving it a name and version tag (e.g., **`devopspresentation/myapp:1.0`**):
+2. Build a Docker image for MyApp, giving it a name and version tag (e.g., `devopspresentation/myapp:1.0`):
     
     ```bash
     docker build -t devopspresentation/myapp:1.0 .
     ```
     
-3. Verify that the Docker image has been successfully built:
+3. Push the Docker image to Docker Hub:
+    
+    ```bash
+    docker push devopspresentation/myapp
+    ```
+    
+4. Verify that the Docker image has been successfully built:
     
     ```bash
     docker images
@@ -63,51 +69,60 @@ Before you begin, ensure that you have the following tools installed on your sys
 1. Apply the Kubernetes deployment configuration to deploy MyApp:
     
     ```bash
-    kubectl apply -f deployment.yaml
+    minikube start
     ```
     
-2. Check the nodes in your Kubernetes cluster:
+2. Apply the Kubernetes deployment configuration to deploy MyApp:
+    
+    ```bash
+    kubectl apply -f deployment.yaml
+    
+    ```
+    
+3. Check the nodes in your Kubernetes cluster:
     
     ```bash
     kubectl get nodes -o wide
     ```
     
-3. View the deployments in your cluster:
+4. View the deployments in your cluster:
     
     ```bash
     kubectl get deployments
     ```
     
-4. Check the pods created by the deployment:
+5. Check the pods created by the deployment:
     
     ```bash
     kubectl get pods
     ```
     
-5. Access the logs of specific pods if needed (replace Pod names with actual pod names):
+6. Access the logs of all the pods if needed:
     
     ```bash
-    kubectl logs my-app-7bd7b886d8-4h6nw
-    kubectl logs my-app-7bd7b886d8-gkdz7
+    ./get_pod_logs.sh
     ```
     
-6. Apply the Kubernetes service configuration to expose the application:
+7. Apply the Kubernetes service configuration to expose the application:
     
     ```bash
     kubectl apply -f service.yaml
     ```
     
-7. Check the services available in your cluster:
+8. Check the services available in your cluster:
     
     ```bash
     kubectl get service
-    kubectl get svc
     ```
     
-8. Verify the nodes and their details:
+9. Verify the nodes and their details:
     
     ```bash
     kubectl get nodes -o wide
     ```
     
-9. Access your application by obtaining the external IP of the service, if it's a cloud-based cluster, or by using NodePort or other service type defined in your **`service.yaml`**.
+10. Access your application by obtaining the external IP of the service, using the next script:
+    
+    ```bash
+    ./get_app_url.sh
+    ```

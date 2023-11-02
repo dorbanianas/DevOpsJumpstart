@@ -15,7 +15,7 @@ Before you begin, make sure to have the following tools installed on your system
 1. Clone the project from the repository:
     
     ```bash
-    git clone <https://github.com/dorbanianas/devops-presentation>
+    git clone https://github.com/dorbanianas/devops-presentation
     ```
     
 2. Navigate to the project directory:

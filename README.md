@@ -55,7 +55,7 @@ Before you begin, make sure to have the following tools and utilities installed 
 3. Push the Docker image to Docker Hub:
     
     ```bash
-    docker push devopspresentation/myapp
+    docker push devopspresentation/myapp:1.0
     ```
     
 4. Verify that the Docker image has been successfully built:

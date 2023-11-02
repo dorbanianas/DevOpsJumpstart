@@ -2,7 +2,8 @@ pipeline {
     agent any 
     
     tools{
-        jdk 'JDK17'
+        jdk 'JDK21'
+        maven 'Maven3'
     }
     
     stages{
@@ -22,7 +23,7 @@ pipeline {
         stage("Sonarqube Analysis "){
             steps{
                 sh """
-                    mvn sonar:sonar -Dsonar.url=http://localhost:9000/ -Dsonar.login=sqa_95faca75f100b421fae964b7cb94069cd99f6000 -Dsonar.projectName=Devops \
+                    mvn sonar:sonar -Dsonar.url=http://localhost:9000/ -Dsonar.login=squ_72258a66a1bdd1e1e12c47858ca2d253ceb758ad -Dsonar.projectName=Devops \
                     -Dsonar.java.binaries=. \
                     -Dsonar.projectKey=Devops
                 """

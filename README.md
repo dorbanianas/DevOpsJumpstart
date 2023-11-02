@@ -46,16 +46,16 @@ Before you begin, make sure to have the following tools and utilities installed 
     docker login
     ```
     
-2. Build a Docker image for MyApp, giving it a name and version tag (e.g., `devopspresentation/myapp:1.0`):
+2. Build a Docker image for MyApp, giving it a name and version tag (e.g., `devopspresentation/myapp:latest`):
     
     ```bash
-    docker build -t devopspresentation/myapp:1.0 .
+    docker build -t devopspresentation/myapp:latest .
     ```
     
 3. Push the Docker image to Docker Hub:
     
     ```bash
-    docker push devopspresentation/myapp:1.0
+    docker push devopspresentation/myapp:latest
     ```
     
 4. Verify that the Docker image has been successfully built:

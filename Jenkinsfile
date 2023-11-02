@@ -31,7 +31,7 @@ pipeline {
         }
         // stage("Docker build "){
         //     steps{
-        //         bat "docker build -t devopspresentation/myapp:1.0 ."
+        //         bat "docker build -t devopspresentation/myapp:latest ."
         //     }
         // }
         
@@ -46,7 +46,7 @@ pipeline {
         stage("Docker push"){
             steps {
                  sh """ 
-                        docker tag devopspresentation/myapp:1.0 dockerpresentation/myapp 
+                        docker tag devopspresentation/myapp:latest dockerpresentation/myapp 
                         docker push dockerpresentation/myapp
                     """ 
             }

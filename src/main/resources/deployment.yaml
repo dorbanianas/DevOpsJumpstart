@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-app
-          image: myapp-sample:1.0 # Image that will be used to containers in the cluster
+          image: myapp-sample:latest # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080 # The port that the container is running on in the cluster

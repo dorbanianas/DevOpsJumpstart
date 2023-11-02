@@ -11,7 +11,8 @@ public class MyApp {
 
 	@GetMapping("/")
 	public String defaultPage() {
-		return "Congratulations, you have successfully deployed your application to Kubernetes!"; // Customize this message as needed
+		return "Congratulations, you have successfully deployed your application to Kubernetes!"; // Customize this
+																									// message as needed
 	}
 
 	@GetMapping("/message")

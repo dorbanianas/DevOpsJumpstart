@@ -1,5 +1,4 @@
-# Getting Started with MyApp
-
+# DevOpsJumpstart
 This guide will walk you through the steps to build and deploy MyApp using Maven, Docker, and Kubernetes.
 
 ## Prerequisites
